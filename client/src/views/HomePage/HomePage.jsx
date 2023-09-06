@@ -56,7 +56,6 @@ function Home() {
     // Función de limpieza
     return () => {
       setFilteredGames([]); // Limpia el estado cuando el componente se desmonta o cuando las dependencias cambian
-      se;
     };
   }, [allGames, searchTerm]);
 
