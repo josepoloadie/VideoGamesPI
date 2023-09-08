@@ -5,6 +5,7 @@ import "./Card.css";
 function Card({ game }) {
   const { id, name, genres, backgroundImage } = game;
   const formattedGenres = genres.join(" ");
+
   return (
     <div className="card-container">
       <Link to={`/detail/${id}`}>

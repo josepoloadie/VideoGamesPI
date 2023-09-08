@@ -1,36 +1,6 @@
-// import { useEffect } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import { getVideogames } from "../../redux/actions/actions";
-
-// import Cards from "../../components/Cards/Cards";
-// import Navbar from "../../components/Navbar/Navbar";
-// import "./HomePage.css";
-
-// function Home() {
-//   const dispatch = useDispatch();
-//   const allGames = useSelector((state) => state.allGames);
-
-//   useEffect(() => {
-//     dispatch(getVideogames());
-//     // return () => {
-//     //   clearDetail();
-//     // };
-//   }, [dispatch]);
-
-//   return (
-//     <div className="home">
-//       <h2 className="home-title">Home Page</h2>
-//       <Navbar />
-//       <Cards allGames={allGames} />
-//     </div>
-//   );
-// }
-
-// export default Home;
-
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getVideogames } from "../../redux/actions/actions";
+import { getGenres, getVideogames } from "../../redux/actions/actions";
 
 import Cards from "../../components/Cards/Cards";
 import Navbar from "../../components/Navbar/Navbar";
@@ -38,35 +8,78 @@ import "./HomePage.css";
 
 function Home() {
   const dispatch = useDispatch();
-  const allGames = useSelector((state) => state.allGames);
-
-  const [searchTerm, setSearchTerm] = useState(""); // Estado para almacenar el término de búsqueda
-  const [filteredGames, setFilteredGames] = useState([]); // Estado para almacenar los juegos filtrados
+  const allGenres = useSelector((state) => state.allGenres);
+  const filteredGames = useSelector((state) => state.filteredGames);
 
   useEffect(() => {
+    dispatch(getGenres());
     dispatch(getVideogames());
   }, []);
-
-  useEffect(() => {
-    // Filtrar los juegos según el término de búsqueda
-    const filtered = allGames.filter((game) =>
-      game.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setFilteredGames(filtered);
-    // Función de limpieza
-    return () => {
-      setFilteredGames([]); // Limpia el estado cuando el componente se desmonta o cuando las dependencias cambian
-    };
-  }, [allGames, searchTerm]);
 
   return (
     <div className="home">
       <h2 className="home-title">Home Page</h2>
-      <Navbar setSearchTerm={setSearchTerm} />{" "}
+      <Navbar allGenres={allGenres} />
       {/* Renderizar las tarjetas de los juegos */}
-      {filteredGames.length > 0 ? <Cards allGames={filteredGames} /> : null}
+      <Cards allGames={filteredGames} />
     </div>
   );
 }
 
 export default Home;
+
+// import { useEffect, useState } from "react";
+// import { useDispatch, useSelector } from "react-redux";
+// import { getGenres, getVideogames } from "../../redux/actions/actions";
+
+// import Cards from "../../components/Cards/Cards";
+// import Navbar from "../../components/Navbar/Navbar";
+// import "./HomePage.css";
+
+// function Home() {
+//   const dispatch = useDispatch();
+//   const allGenres = useSelector((state) => state.allGenres);
+//   const filteredGames = useSelector((state) => state.filteredGames);
+
+//   const gamesPerPage = 15;
+//   const [currentPage, setCurrentPage] = useState(1);
+
+//   useEffect(() => {
+//     dispatch(getGenres());
+//     dispatch(getVideogames());
+//   }, []);
+
+//   // Calcular el índice de inicio y fin para los juegos de la página actual
+//   const startIndex = (currentPage - 1) * gamesPerPage;
+//   const endIndex = startIndex + gamesPerPage;
+//   const gamesToShow = filteredGames.slice(startIndex, endIndex);
+
+//   // Función para cambiar la página actual
+//   const handlePageChange = (page) => {
+//     setCurrentPage(page);
+//   };
+//   return (
+//     <div className="home">
+//       <h2 className="home-title">Home Page</h2>
+//       <Navbar allGenres={allGenres} />
+//       {/* Renderizar las tarjetas de los juegos de la página actual */}
+//       <Cards allGames={gamesToShow} />
+//       {/* Renderizar los controles de paginación */}
+//       <div className="pagination">
+//         {Array.from({
+//           length: Math.ceil(filteredGames.length / gamesPerPage),
+//         }).map((_, index) => (
+//           <button
+//             key={index}
+//             onClick={() => handlePageChange(index + 1)}
+//             className={currentPage === index + 1 ? "active" : ""}
+//           >
+//             {index + 1}
+//           </button>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default Home;
