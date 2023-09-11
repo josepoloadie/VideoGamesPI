@@ -42,6 +42,13 @@ function SearchBar({ allGenres }) {
     dispatch(orderGame("B"));
   };
 
+  const handleListRatingMayorMenor = () => {
+    dispatch(orderGame("C"));
+  };
+  const handleListRatingMenorMayor = () => {
+    dispatch(orderGame("D"));
+  };
+
   const handleSelectChange = async (event) => {
     const selectedValue = event.target.value;
     // Realiza acciones basadas en la opción seleccionada
@@ -67,6 +74,13 @@ function SearchBar({ allGenres }) {
       <button className="button" onClick={handleListDescendant}>
         Z...A
       </button>
+      <button className="button" onClick={handleListRatingMenorMayor}>
+        Rating 3...1
+      </button>
+      <button className="button" onClick={handleListRatingMayorMenor}>
+        Rating 1...3
+      </button>
+
       {allGenres ? (
         <select onChange={handleSelectChange} value={selectedGenre}>
           <option value={"SinFiltrar"}>Filtrar por genero...</option>

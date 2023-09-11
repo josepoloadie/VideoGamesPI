@@ -72,8 +72,16 @@ function rootReducer(state = initialState, { type, payload }) {
       let ordered;
       if (payload === "A") {
         ordered = orderedGames.sort((a, b) => a.name.localeCompare(b.name));
-      } else {
+      }
+      if (payload === "B") {
         ordered = orderedGames.sort((a, b) => b.name.localeCompare(a.name));
+      }
+
+      if (payload === "C") {
+        ordered = orderedGames.sort((a, b) => a.rating - b.rating);
+      }
+      if (payload === "D") {
+        ordered = orderedGames.sort((a, b) => b.rating - a.rating);
       }
 
       return {
