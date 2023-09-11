@@ -5,9 +5,11 @@ const router = Router();
 
 const videogamesRoutes = require("./videogamesRoutes");
 const genreRoutes = require("./genreRoutes");
+const platformsRoutes = require("./platformsRoutes");
 
 router.use("/videogames", videogamesRoutes);
 router.use("/genres", genreRoutes);
+router.use("/platforms", platformsRoutes);
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);

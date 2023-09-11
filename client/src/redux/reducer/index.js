@@ -4,10 +4,16 @@ import {
   GET_VIDEOGAMEBYNAME,
   FILTER,
   GET_GENRES,
+  GET_PLATFORMS,
   ORDER,
 } from "../actions/types";
 
-let initialState = { allGames: [], allGenres: [], filteredGames: [] };
+let initialState = {
+  allGames: [],
+  allGenres: [],
+  filteredGames: [],
+  allPlatforms: [],
+};
 
 function rootReducer(state = initialState, { type, payload }) {
   switch (type) {
@@ -16,6 +22,12 @@ function rootReducer(state = initialState, { type, payload }) {
         ...state,
         allGenres: payload,
       };
+    case GET_PLATFORMS:
+      return {
+        ...state,
+        allPlatforms: payload,
+      };
+
     case GET_VIDEOGAMES:
       return {
         ...state,
@@ -32,14 +44,12 @@ function rootReducer(state = initialState, { type, payload }) {
     case GET_VIDEOGAMEBYNAME:
       return {
         ...state,
-        allGames: payload,
+        filteredGames: payload,
       };
 
     case FILTER:
       let filteredGames = [...state.allGames];
-
       let filter;
-      console.log(payload);
       if (payload === "API" || payload === "BD") {
         filter = filteredGames.filter((juego) => juego.origin === payload);
       } else if (payload === "SinFiltrar") {

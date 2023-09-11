@@ -1,16 +1,28 @@
+@import url(https://fonts.googleapis.com/css?family=Shadows+Into+Light);
 .card-container {
   display: flex;
   flex-direction: column;
-  background-color: #95dada;
-  border: 1px solid grey;
+  font-family: "Shadows Into Light", cursive;
+  color: #333333;
+  background-color: #0accc1;
   border-radius: 5px;
-  padding: 25px;
-  margin: 10px;
-  cursor: pointer;
-  -moz-osx-font-smoothing: grayscale;
-  backface-visibility: hidden;
+  width: 205px;
+  height: 300px;
+  margin: 20px 0;
   transform: translateZ(0);
   transition: transform 0.25s ease-out;
+  cursor: default;
+}
+h2 {
+  font-weight: bolder;
+  font-size: 17px;
+  margin: 0;
+}
+
+p {
+  font-weight: 100;
+  font-size: 19px;
+  margin: auto;
 }
 
 .card-container:hover {
@@ -18,6 +30,8 @@
 }
 
 img {
-  width: 300px;
-  height: 300px;
+  border-top-left-radius: 5px 5px;
+  border-top-right-radius: 5px 5px;
+  width: 205px;
+  height: 200px;
 }

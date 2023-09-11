@@ -77,7 +77,6 @@ const getAllVideogames = async (query) => {
   const filtered = allGames.filter((game) =>
     game.name.toLowerCase().includes(query.name.toLowerCase())
   );
-
   return filtered.slice(0, 15);
 };
 

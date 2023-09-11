@@ -9,10 +9,10 @@ function Card({ game }) {
   return (
     <div className="card-container">
       <Link to={`/detail/${id}`}>
-        <img src={backgroundImage} alt="AQUI VA LA SUPUESTA IMAGEN" />
+        <img src={backgroundImage} alt={name} />
       </Link>
       <h2>{name}</h2>
-      <p>Generos: {formattedGenres}</p>
+      <p>{formattedGenres}</p>
     </div>
   );
 }

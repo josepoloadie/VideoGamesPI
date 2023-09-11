@@ -1,0 +1,69 @@
+.button {
+  display: inline-block;
+  background-color: #333;
+  color: #fff;
+  font-family: "Shadows Into Light", cursive;
+  font-size: 20px;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  margin: 0;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-right: 5px;
+}
+
+.button:hover {
+  background-color: #fff;
+  color: #333;
+}
+
+select {
+  appearance: none; /* Elimina los estilos nativos del sistema operativo */
+  font-size: 16px; /* Tamaño de fuente */
+  font-family: "Shadows Into Light", cursive;
+  border: 1px solid #ccc; /* Borde */
+  border-radius: 5px; /* Bordes redondeados */
+  background-color: #fff; /* Fondo blanco */
+  width: 200px; /* Ancho del select */
+  cursor: pointer; /* Cursor de selección */
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Estilo cuando el select está enfocado */
+select:focus {
+  outline: none; /* Elimina el contorno predeterminado */
+  border-color: #555; /* Cambia el color del borde al enfocar */
+  box-shadow: 0 0 5px rgba(85, 85, 85, 0.5); /* Sombra al enfocar */
+}
+
+/* Estilo para las opciones dentro del select */
+select option {
+  padding: 10px; /* Espaciado interior para las opciones */
+}
+
+/* Cambia el estilo de las opciones al pasar el mouse */
+select option:hover {
+  background-color: #555; /* Cambia el fondo al pasar el mouse */
+  color: #fff; /* Cambia el color del texto al pasar el mouse */
+}
+
+input[type="text"] {
+  padding: 7px; /* Espaciado interior del campo de entrada */
+  margin-right: 5px;
+  border: 1px solid #ccc; /* Borde del campo de entrada */
+  border-radius: 5px; /* Bordes redondeados */
+  font-size: 16px; /* Tamaño de fuente del campo de entrada */
+}
+input[type="text"]:focus {
+  border-color: #555; /* Cambia el color del borde al enfocar */
+  box-shadow: 0 0 5px rgba(85, 85, 85, 0.5); /* Sombra al enfocar */
+}
+
+input[type="text"]::placeholder {
+  font-family: "Shadows Into Light", cursive;
+  color: #999; /* Color del texto de marcador de posición */
+  font-size: 20px; /* Tamaño de fuente del texto de marcador de posición */
+}

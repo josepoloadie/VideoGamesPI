@@ -1,6 +1,7 @@
 import axios from "axios";
 import {
   GET_GENRES,
+  GET_PLATFORMS,
   GET_VIDEOGAMES,
   GET_VIDEOGAME,
   FILTER,
@@ -14,6 +15,17 @@ export const getGenres = () => {
       return dispatch({ type: GET_GENRES, payload: data });
     } catch (error) {
       console.error("Error al obtener los generos:", error);
+    }
+  };
+};
+
+export const getPlatforms = () => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios(`http://localhost:3001/platforms`);
+      return dispatch({ type: GET_PLATFORMS, payload: data });
+    } catch (error) {
+      console.error("Error al obtener las plataformas:", error);
     }
   };
 };

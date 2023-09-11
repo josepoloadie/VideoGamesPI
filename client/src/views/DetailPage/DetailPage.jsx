@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getVideogame } from "../../redux/actions/actions";
+import Navbar from "../../components/Navbar/Navbar";
 
 import "./DetailPage.css";
 
@@ -31,18 +32,27 @@ function Detail() {
 
   return (
     <div>
-      <p>ID:{id}</p>
-      {name ? <h1>{name}</h1> : <p></p>}
-      {backgroundImage ? (
-        <img src={backgroundImage} alt="SUPUESTA_IMAGEN" />
-      ) : null}
-      {platforms ? <p>{platforms.join(" ")}</p> : null}
-      {released ? <p>{released}</p> : <p></p>}
-      {textContent ? <p>{textContent}</p> : null}
-      {rating ? <p>{rating}</p> : null}
-      {genres ? <p>{genres.join(" ")}</p> : null}
+      <Navbar />
+      <div className="container">
+        <div className="detail">
+          <div className="name">
+            {name ? <h2 className="home-title">{name}</h2> : <p></p>}
+          </div>
+          {backgroundImage ? (
+            <img src={backgroundImage} alt="SUPUESTA_IMAGEN" />
+          ) : null}
+          <div className="details">
+            <p>ID: {id}</p>
+            {platforms ? <p>Platforms: {platforms.join(" - ")}</p> : null}
+            {released ? <p>Release date: {released}</p> : <p></p>}
+            {textContent ? <p className="description">{textContent}</p> : null}
+            {rating ? <p>Rating: {rating}</p> : null}
+            {genres ? <p>Genres: {genres.join(" - ")}</p> : null}
+          </div>
+        </div>
+      </div>
       <Link to={"/home"}>
-        <button>Atras</button>
+        <butto className="button">Atras</butto>
       </Link>
     </div>
   );
